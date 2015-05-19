@@ -1,4 +1,5 @@
 <?php
+echo "<h2>app_dev.php is deprecated  </h2>\n"; exit;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;

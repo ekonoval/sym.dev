@@ -1,9 +1,18 @@
 <?php
-
+/**
+ * Switching environments by apache env var.
+ * Taken from https://github.com/brandonwamboldt/symfony-app
+ */
 use Symfony\Component\ClassLoader\ApcClassLoader;
 use Symfony\Component\HttpFoundation\Request;
 
+$environment = (getenv('SYMFONY_ENV')) ?: 'prod';
+
+// Set a constant for the base Symfony directory, can be useful
+define('ROOT_DIR', realpath(__DIR__ . '/../'));
+
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
+//Debug::enable();
 
 // Enable APC for autoloading to improve performance.
 // You should change the ApcClassLoader first argument to a unique prefix
@@ -18,7 +27,8 @@ $apcLoader->register(true);
 require_once __DIR__.'/../app/AppKernel.php';
 //require_once __DIR__.'/../app/AppCache.php';
 
-$kernel = new AppKernel('prod', false);
+//$kernel = new AppKernel($environment, $environment != 'prod');
+$kernel = new AppKernel($environment, true);
 $kernel->loadClassCache();
 //$kernel = new AppCache($kernel);
 
