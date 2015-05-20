@@ -12,7 +12,7 @@ $environment = (getenv('SYMFONY_ENV')) ?: 'prod';
 define('ROOT_DIR', realpath(__DIR__ . '/../'));
 
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
-//Debug::enable();
+//Symfony\Component\Debug\Debug::enable();
 
 // Enable APC for autoloading to improve performance.
 // You should change the ApcClassLoader first argument to a unique prefix
