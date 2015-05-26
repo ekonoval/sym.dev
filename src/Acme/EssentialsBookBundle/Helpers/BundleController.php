@@ -1,6 +1,7 @@
 <?php
 namespace Acme\EssentialsBookBundle\Helpers;
 
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class BundleController extends Controller
@@ -20,6 +21,14 @@ class BundleController extends Controller
     public function renderAuto($ctrl, $template, $assignVars)
     {
         return $this->render("{$this->bundleName}:{$ctrl}:{$template}", $assignVars);
+    }
+
+    /**
+     * @return EntityManager
+     */
+    public function getDoctrineEntityManager()
+    {
+        return $this->getDoctrine()->getManager();
     }
 
 }
