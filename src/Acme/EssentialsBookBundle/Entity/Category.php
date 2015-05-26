@@ -2,12 +2,13 @@
 
 namespace Acme\EssentialsBookBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Category
  *
- * @ORM\Table()
+ * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="Acme\EssentialsBookBundle\Entity\CategoryRepository")
  */
 class Category
@@ -27,6 +28,16 @@ class Category
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     */
+    protected $products;
+
+    function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
 
 
     /**
@@ -60,5 +71,38 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Add products
+     *
+     * @param \Acme\EssentialsBookBundle\Entity\Product $products
+     * @return Category
+     */
+    public function addProduct(\Acme\EssentialsBookBundle\Entity\Product $products)
+    {
+        $this->products[] = $products;
+
+        return $this;
+    }
+
+    /**
+     * Remove products
+     *
+     * @param \Acme\EssentialsBookBundle\Entity\Product $products
+     */
+    public function removeProduct(\Acme\EssentialsBookBundle\Entity\Product $products)
+    {
+        $this->products->removeElement($products);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProducts()
+    {
+        return $this->products;
     }
 }
