@@ -31,6 +31,8 @@ class BlogController extends BundleController
     {
         /** @var Router $router */
         $router = $this->get('router');
+        dump($router); //exit;
+
         $params = $router->match('/blog/my-blog-post');
         pa($params);
 
