@@ -5,6 +5,6 @@ php app/console cache:clear --env=prod
 php app/console assets:install target --symlink
 
 # generate entity getters / setters
-php app/console doctrine:generate:entities Acme\EssentialsBookBundle\Entity\Product
+php app/console doctrine:generate:entities Acme/EssentialsBookBundle/Entity/Product --no-backup
 
-php app/console doctrine:generate:entities Acme/EssentialsBookBundle/Entity/Product
+php app/console doctrine:schema:update --force
