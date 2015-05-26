@@ -8,3 +8,8 @@ php app/console assets:install target --symlink
 php app/console doctrine:generate:entities Acme/EssentialsBookBundle/Entity/Product --no-backup
 
 php app/console doctrine:schema:update --force
+
+# create entity
+php app/console doctrine:generate:entity --entity="Acme\EssentialsBookBundle\Entity\Category" --fields="name:string(255)"
+            AcmeEssentialsBookBundle:Category
+
