@@ -1,5 +1,10 @@
 php app/console cache:clear
 php app/console cache:clear --env=prod
 
-#
+# copy assets
 php app/console assets:install target --symlink
+
+# generate entity getters / setters
+php app/console doctrine:generate:entities Acme\EssentialsBookBundle\Entity\Product
+
+php app/console doctrine:generate:entities Acme/EssentialsBookBundle/Entity/Product
