@@ -2,7 +2,7 @@ acme_essentials_book:
     resource: "@AcmeEssentialsBookBundle/Resources/config/routing.yml"
     prefix:   /
 
-acme_essentials_book_ann:
+acme_essentials_book_blog:
     resource: "@AcmeEssentialsBookBundle/Controller/BlogController.php"
     type:   annotation
 
