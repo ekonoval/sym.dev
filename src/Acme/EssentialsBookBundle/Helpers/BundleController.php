@@ -2,6 +2,7 @@
 namespace Acme\EssentialsBookBundle\Helpers;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class BundleController extends Controller
@@ -29,6 +30,15 @@ class BundleController extends Controller
     public function getDoctrineEntityManager()
     {
         return $this->getDoctrine()->getManager();
+    }
+
+    /**
+     * @param $repoName
+     * @return EntityRepository
+     */
+    public function getDoctrineRepo($repoName)
+    {
+        return $this->getDoctrine()->getRepository($repoName);
     }
 
 }

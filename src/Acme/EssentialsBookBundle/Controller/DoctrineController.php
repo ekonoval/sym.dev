@@ -13,7 +13,38 @@ class DoctrineController extends BundleController
      */
     public function indexAction()
     {
-        $this->fetch();
+        //$this->fetch();
+        //$this->queryBuilder();
+        $this->dql();
+    }
+
+    private function dql()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+            'SELECT p.id, p.price
+            FROM '.Product::class.' p
+            WHERE p.price > :price
+            ORDER BY p.price ASC'
+        )->setParameter('price', '19.90');
+
+        $products = $query->getResult();
+        pa($products);
+    }
+
+    private function queryBuilder()
+    {
+        $repository = $this->getDoctrineRepo(Product::class);
+
+        $query = $repository->createQueryBuilder('p')
+            ->where('p.price > :price')
+                ->setParameter('price', '19.98')
+            ->orderBy('p.price', 'ASC')
+            ->getQuery();
+
+        //$products = $query->getResult();
+        $products = $query->getSingleResult();
+        pa($products);
     }
 
     private function fetch()
