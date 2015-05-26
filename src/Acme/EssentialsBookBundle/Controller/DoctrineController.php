@@ -2,6 +2,7 @@
 namespace Acme\EssentialsBookBundle\Controller;
 
 use Acme\EssentialsBookBundle\Entity\Product;
+use Acme\EssentialsBookBundle\Entity\ProductRepository;
 use Acme\EssentialsBookBundle\Helpers\BundleController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,15 @@ class DoctrineController extends BundleController
     {
         //$this->fetch();
         //$this->queryBuilder();
-        $this->dql();
+//        $this->dql();
+        $this->repo();
+    }
+
+    private function repo()
+    {
+        $repo = $this->getDoctrineRepo(Product::class);
+        $repo->findAllOrderedByName();
+
     }
 
     private function dql()

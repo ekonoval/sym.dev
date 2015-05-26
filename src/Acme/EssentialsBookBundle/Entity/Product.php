@@ -6,9 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="product")
+ * @ORM\Entity(repositoryClass="Acme\EssentialsBookBundle\Entity\ProductRepository")
+
  */
 class Product
 {
+
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
