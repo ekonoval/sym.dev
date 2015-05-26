@@ -5,3 +5,11 @@ acme_essentials_book_homepage:
 acme_esb_rand:
   path: /random/{limit}
   defaults: { _controller: AcmeEssentialsBookBundle:Random:index }
+
+acme_essentials_book_blog:
+    resource: "@AcmeEssentialsBookBundle/Controller/BlogController.php"
+    type:   annotation
+
+acme_essentials_book_db:
+  resource: "@AcmeEssentialsBookBundle/Controller/DoctrineController.php"
+  type:   annotation
