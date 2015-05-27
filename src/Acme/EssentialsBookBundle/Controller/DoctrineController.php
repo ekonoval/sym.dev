@@ -19,20 +19,28 @@ class DoctrineController extends BundleController
         //$this->fetch();
         //$this->queryBuilder();
 //        $this->dql();
-        //$this->repo();
+//        $this->repo();exit;
 //        $this->linking();
-        $this->getRelated();
+//        $this->getRelated();
+        $this->join();
 
         return new PlainResponse('');
     }
 
+    private function join()
+    {
+        $id = 5;
+        $res = $this->getDoctrineRepo(Product::class)->findOneByIdJoinedToCategory($id);
+        pa('xx');
+
+    }
+
     private function getRelated()
     {
-
         /** @var Product $product */
-        $product = $this->getDoctrineRepo(Product::class)->find(5);
+        $product = $this->getDoctrineRepo(Product::class)->find(6);
         $category = $product->getCategory();
-
+        $category->getName();
     }
 
     private function linking()

@@ -27,6 +27,28 @@ class ProductRepository extends EntityRepository
             ->getResult()
         ;
 
-        pa($res);
+        //pa($res);
     }
+
+    public function findOneByIdJoinedToCategory($id)
+    {
+        $em = $this->getEntityManager();
+
+        // partial p.{id, name} - for specific fields selecting
+        $dql = "
+            SELECT
+                p
+                , c.id
+            FROM ".Product::class." p
+                INNER JOIN p.category c
+            WHERE
+                p.id = :id
+        ";
+        $query = $em->createQuery($dql)->setParameters(['id' => $id]);
+
+        $res = $query->getOneOrNullResult();
+
+        return $res;
+    }
+
 }
