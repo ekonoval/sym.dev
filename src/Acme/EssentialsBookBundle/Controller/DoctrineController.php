@@ -1,9 +1,11 @@
 <?php
 namespace Acme\EssentialsBookBundle\Controller;
 
+use Acme\EssentialsBookBundle\Entity\Category;
 use Acme\EssentialsBookBundle\Entity\Product;
 use Acme\EssentialsBookBundle\Entity\ProductRepository;
 use Acme\EssentialsBookBundle\Helpers\BundleController;
+use Acme\EssentialsBookBundle\Helpers\PlainResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,7 +19,36 @@ class DoctrineController extends BundleController
         //$this->fetch();
         //$this->queryBuilder();
 //        $this->dql();
-        $this->repo();
+        //$this->repo();
+//        $this->linking();
+        $this->getRelated();
+
+        return new PlainResponse('');
+    }
+
+    private function getRelated()
+    {
+
+        /** @var Product $product */
+        $product = $this->getDoctrineRepo(Product::class)->find(5);
+        $category = $product->getCategory();
+
+    }
+
+    private function linking()
+    {
+        $em = $this->getDoctrineEntityManager();
+
+        $category = new Category();
+        $category->setName('risking - huisking '.time());
+        $em->persist($category);
+
+        $prodRepo = $this->getDoctrineRepo(Product::class);
+        $product = $prodRepo->find(5);
+
+        /** @var Product $product */
+        $product->setCategory($category);
+        $em->flush();
     }
 
     private function repo()

@@ -105,4 +105,5 @@ class Category
     {
         return $this->products;
     }
+
 }
