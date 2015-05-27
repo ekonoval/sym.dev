@@ -22,9 +22,25 @@ class DoctrineController extends BundleController
 //        $this->repo();exit;
 //        $this->linking();
 //        $this->getRelated();
-        $this->join();
+//        $this->join();
+        $this->timestampable();
 
         return new PlainResponse('');
+    }
+
+    private function timestampable()
+    {
+        $em = $this->getDoctrineEntityManager();
+
+//        $prod = new Product();
+//        $prod->setName('fake');
+//        $prod->setPrice(2.334455);
+//        $em->persist($prod);
+//        $em->flush();
+
+        $prod = $this->getDoctrineRepo(Product::class)->find(20);
+        $prod->setName($prod->getName().' '.time());
+        $em->flush();
     }
 
     private function join()

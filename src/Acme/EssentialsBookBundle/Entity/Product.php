@@ -2,6 +2,7 @@
 namespace Acme\EssentialsBookBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity
@@ -32,7 +33,25 @@ class Product
     /**
      * @ORM\Column(type="text")
      */
-    protected $description;
+    protected $description = '';
+
+    /**
+     * @var \DateTime $created_at
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     * @ORM\Version
+     */
+    protected $created_at;
+
+    /**
+     * @var \DateTime $updated_at
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime", nullable=false, options={"default" = "0000-00-00 00:00:00"})
+     * @ORM\Version
+     */
+    protected $updated_at;
 
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
@@ -141,5 +160,28 @@ class Product
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set created_at
+     *
+     * @param \DateTime $createdAt
+     * @return Product
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->created_at = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get created_at
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
     }
 }
