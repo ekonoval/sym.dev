@@ -32,13 +32,14 @@ class DoctrineController extends BundleController
     {
         $em = $this->getDoctrineEntityManager();
 
-//        $prod = new Product();
-//        $prod->setName('fake');
-//        $prod->setPrice(2.334455);
-//        $em->persist($prod);
-//        $em->flush();
+        $prod = new Product();
+        $prod->setName('fake');
+        $prod->setPrice(2.334455);
+        $em->persist($prod);
+        $em->flush();
 
-        $prod = $this->getDoctrineRepo(Product::class)->find(20);
+//        $prod = $this->getDoctrineRepo(Product::class)->find(20);
+        sleep(2);
         $prod->setName($prod->getName().' '.time());
         $em->flush();
     }

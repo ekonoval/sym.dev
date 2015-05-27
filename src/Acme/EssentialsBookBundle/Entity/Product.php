@@ -40,7 +40,8 @@ class Product
      *
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
-     * @ORM\Version
+     * //@ORM\Version for mysql 'timestamp'
+     * //@ORM\Column(type="datetime", nullable=false, options={"default" = "0000-00-00 00:00:00"})
      */
     protected $created_at;
 
@@ -48,8 +49,7 @@ class Product
      * @var \DateTime $updated_at
      *
      * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(type="datetime", nullable=false, options={"default" = "0000-00-00 00:00:00"})
-     * @ORM\Version
+     * @ORM\Column(type="datetime")
      */
     protected $updated_at;
 
