@@ -1,8 +1,14 @@
 <?php
 namespace Acme\EssentialsBookBundle\Entity\Form;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 class Task
 {
+    /**
+     * @Assert\NotBlank()
+     */
     protected $task;
 
     protected $dueDate;

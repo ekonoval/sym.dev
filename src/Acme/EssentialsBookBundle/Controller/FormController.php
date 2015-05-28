@@ -32,7 +32,7 @@ class FormController extends BundleController
 
         $form = $this->createFormBuilder($task)
             ->add('task', 'text')
-            ->add('dueDate', 'date')
+            ->add('dueDate', 'date', array('widget' => 'single_text'))
             ->add('save', 'submit', array('label' => 'Create Task'))
             ->add('saveAndAdd', 'submit', array('label' => 'Save and Add'))
             ->getForm();
