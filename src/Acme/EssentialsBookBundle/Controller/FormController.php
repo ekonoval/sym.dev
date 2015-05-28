@@ -27,12 +27,13 @@ class FormController extends BundleController
     {
         // create a task and give it some dummy data for this example
         $task = new Task();
-        $task->setTask('Write a blog post');
-        $task->setDueDate(new \DateTime('tomorrow'));
+//        $task->setTask('Write a blog post');
+//        $task->setDueDate(new \DateTime('tomorrow'));
 
         $form = $this->createFormBuilder($task)
             ->add('task', 'text')
             ->add('dueDate', 'date', array('widget' => 'single_text'))
+            ->add('comment', 'textarea')
             ->add('save', 'submit', array('label' => 'Create Task'))
             ->add('saveAndAdd', 'submit', array('label' => 'Save and Add'))
             ->getForm();
@@ -46,7 +47,12 @@ class FormController extends BundleController
             return $this->redirectToRoute('ebb_form_new', ['done' => time()]);
         }
 
-        return $this->renderAuto('Form', 'new.html.twig', array(
+        $tpl = 'new.html.twig';
+        if ($request->query->get('manual', 0) == 1) {
+            $tpl = 'new-manual.html.twig';
+        }
+
+        return $this->renderAuto('Form', $tpl, array(
             'form' => $form->createView(),
         ));
     }

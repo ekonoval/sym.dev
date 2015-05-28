@@ -13,6 +13,11 @@ class Task
 
     protected $dueDate;
 
+    /**
+     * @Assert\NotBlank()
+     */
+    protected $comment;
+
     public function getTask()
     {
         return $this->task;
@@ -31,5 +36,21 @@ class Task
     public function setDueDate(\DateTime $dueDate = null)
     {
         $this->dueDate = $dueDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param mixed $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
     }
 }
