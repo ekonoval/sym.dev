@@ -26,11 +26,13 @@ class ValidationController extends BundleController
     private function v1()
     {
         $author = new Author();
-        $author->name = 'fake';
+        //$author->name = 'fake';
+        //$author->gender = null;
 
         /** @var Validator\LegacyValidator $validator */
         $validator = $this->get('validator');
         $errors = $validator->validate($author);
+        //$errors = $validator->validate($author, null, ['Author']);
 
         if (count($errors) > 0) {
             /*

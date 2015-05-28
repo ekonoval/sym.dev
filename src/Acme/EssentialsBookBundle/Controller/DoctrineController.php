@@ -23,9 +23,15 @@ class DoctrineController extends BundleController
 //        $this->linking();
 //        $this->getRelated();
 //        $this->join();
-        $this->timestampable();
+//        $this->timestampable();
+        $this->testTsFetch();
 
         return new PlainResponse('');
+    }
+
+    private function testTsFetch()
+    {
+        $prod = $this->getDoctrineRepo(Product::class)->find(15);
     }
 
     private function timestampable()
