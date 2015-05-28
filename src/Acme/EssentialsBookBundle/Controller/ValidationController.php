@@ -1,6 +1,8 @@
 <?php
 namespace Acme\EssentialsBookBundle\Controller;
 use Acme\EssentialsBookBundle\Entity\Author;
+use Acme\EssentialsBookBundle\Entity\Validation\User;
+use Acme\EssentialsBookBundle\Entity\Validation\UserWithGroupProvider;
 use Acme\EssentialsBookBundle\Helpers\BundleController;
 use Acme\EssentialsBookBundle\Helpers\PlainResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -14,13 +16,44 @@ class ValidationController extends BundleController
      */
     public function indexAction()
     {
-        $res = $this->v1();
+//        $res = $this->v1();
+//        $this->validateUser();
+        $this->groupProviderTest();
 
         if (empty($res)) {
             $res = new PlainResponse('validation response');
         }
 
         return $res;
+    }
+
+    private function groupProviderTest()
+    {
+        $user = new UserWithGroupProvider();
+        $user->name = 111;
+        $user->creditCard = ' ';
+
+        $errors = (string) $this->getValidator()->validate($user);
+
+        echo $errors;
+    }
+
+    private function getValidator()
+    {
+        /** @var Validator\LegacyValidator $validator */
+        $validator = $this->get('validator');
+        return $validator;
+    }
+
+    private function validateUser()
+    {
+        $user = new User();
+        //$user->username
+
+        $validator = $this->getValidator();
+        $errors = $validator->validate($user);
+        $errorsString = (string) $errors;
+        echo($errorsString);
     }
 
     private function v1()

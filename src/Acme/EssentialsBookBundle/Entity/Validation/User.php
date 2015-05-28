@@ -13,12 +13,12 @@ class User implements UserInterface
     /**
     * @Assert\NotBlank
     */
-    private $username;
+    public $username;
 
     /**
     * @Assert\NotBlank
     */
-    private $password;
+    public $password;
 
     /**
      * @Assert\True(message="The password cannot match your username", groups={"Strict"})
