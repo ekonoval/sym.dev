@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class ValidationController extends BundleController
 {
     /**
@@ -18,13 +20,26 @@ class ValidationController extends BundleController
     {
 //        $res = $this->v1();
 //        $this->validateUser();
-        $this->groupProviderTest();
+//        $this->groupProviderTest();
+        $this->validatePlainEmail();
 
         if (empty($res)) {
             $res = new PlainResponse('validation response');
         }
 
         return $res;
+    }
+
+    private function validatePlainEmail()
+    {
+        $email = "qqq@gmail.com";
+//        $email = "qqq@@gmail.com ";
+        $emailConstraint = new Assert\Email();
+        $emailConstraint->message = "Hey! Email is incorrect";
+        $emailConstraint->checkMX = true;
+
+        $errors = (string)$this->getValidator()->validate($email, $emailConstraint);
+        echo $errors;
     }
 
     private function groupProviderTest()
