@@ -13,3 +13,7 @@ acme_essentials_book_blog:
 acme_essentials_book_db:
   resource: "@AcmeEssentialsBookBundle/Controller/DoctrineController.php"
   type:   annotation
+
+acme_essentials_book_validate:
+    resource: "@AcmeEssentialsBookBundle/Controller/ValidationController.php"
+    type:   annotation
