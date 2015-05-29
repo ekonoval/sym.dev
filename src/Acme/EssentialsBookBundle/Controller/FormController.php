@@ -2,7 +2,9 @@
 namespace Acme\EssentialsBookBundle\Controller;
 
 use Acme\EssentialsBookBundle\Entity\Form\Task;
+use Acme\EssentialsBookBundle\Entity\Form\TaskWithCategory;
 use Acme\EssentialsBookBundle\Form\Type\TaskType;
+use Acme\EssentialsBookBundle\Form\Type\TaskTypeWithCategory;
 use Acme\EssentialsBookBundle\Helpers\BundleController;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -17,6 +19,27 @@ class FormController extends BundleController
     {
         pa();
         exit;
+    }
+
+    /**
+     * @Route("/new-taksk-and-category")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newTaskPlusCategory(Request $request)
+    {
+        $taskWithCat = new TaskWithCategory();
+
+        $form = $this->createForm(new TaskTypeWithCategory());
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $data = $form->getData();
+        }
+
+        return $this->renderAuto('Form', 'new.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
     /**
