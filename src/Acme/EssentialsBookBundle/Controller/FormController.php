@@ -19,7 +19,6 @@ class FormController extends BundleController
         exit;
     }
 
-
     /**
      * @Route("/new-type")
      * @param Request $request
@@ -32,14 +31,19 @@ class FormController extends BundleController
 //        $task->setTask('Write a blog post');
 //        $task->setDueDate(new \DateTime('tomorrow'));
 
-        $form = $this->createForm(new TaskType(), $task);
+        $form = $this->createForm(new TaskType());
         $form->handleRequest($request);
+
+        //$form->get('fake')->getData();
+        //$form->get('fake')->setData(true);
 
         if ($form->isValid()) {
             $form->get('saveAndAdd')->isClicked();
 
             return $this->redirectToRoute('ebb_form_new', ['done' => time()]);
         }
+
+
 
         $tpl = 'new.html.twig';
         return $this->renderAuto('Form', $tpl, array(

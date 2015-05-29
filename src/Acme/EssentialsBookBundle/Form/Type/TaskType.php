@@ -15,6 +15,8 @@ class TaskType extends AbstractType
             ->add('task')
             //->add('dueDate', null, array('widget' => 'single_text'))
             ->add('dueDate', 'date', array('widget' => 'single_text'))
+            //->add('fake', 'checkbox', array('mapped' => false))
+            ->add('fake', 'checkbox', array('mapped' => false))
             ->add('save', 'submit');
     }
 
