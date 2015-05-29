@@ -20,6 +20,21 @@ class FormController extends BundleController
     }
 
     /**
+     * @Route("/new-service")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newWithServicesAction(Request $request)
+    {
+        $task = new Task();
+        $form = $this->createForm('taskFrm', $task);
+
+        return $this->renderAuto('Form', 'new.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
      * @Route("/new-type")
      * @param Request $request
      * @return Response

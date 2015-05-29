@@ -22,7 +22,7 @@ class TaskType extends AbstractType
 
     public function getName()
     {
-        return 'task';
+        return 'taskFrm';
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
