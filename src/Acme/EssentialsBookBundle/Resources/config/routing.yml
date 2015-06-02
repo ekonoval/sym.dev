@@ -22,3 +22,8 @@ acme_essentials_book_form:
     resource: "@AcmeEssentialsBookBundle/Controller/FormController.php"
     prefix: /form
     type:   annotation
+
+acme_essentials_book_security:
+    resource: "@AcmeEssentialsBookBundle/Controller/SecurityController.php"
+#    prefix: /security
+    type:   annotation
