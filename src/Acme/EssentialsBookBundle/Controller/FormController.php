@@ -9,6 +9,8 @@ use Acme\EssentialsBookBundle\Helpers\BundleController;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class FormController extends BundleController
 {
@@ -19,6 +21,34 @@ class FormController extends BundleController
     {
         pa();
         exit;
+    }
+
+    /**
+     * @Route("/non-class-form")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function actionNonClassForm(Request $request)
+    {
+        $defaultData = array('message' => 'Type your message here');
+        $form = $this->createFormBuilder($defaultData)
+            ->add('name', 'text', ['constraints' => [new NotBlank()]])
+            ->add('email', 'email')
+            ->add('message', 'textarea')
+            ->add('send', 'submit')
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $form->getData();
+            pa($data);
+        }
+
+        return $this->renderAuto('Form', 'new.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
     /**
