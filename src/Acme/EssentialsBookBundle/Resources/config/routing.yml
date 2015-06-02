@@ -17,3 +17,8 @@ acme_essentials_book_db:
 acme_essentials_book_validate:
     resource: "@AcmeEssentialsBookBundle/Controller/ValidationController.php"
     type:   annotation
+
+acme_essentials_book_form:
+    resource: "@AcmeEssentialsBookBundle/Controller/FormController.php"
+    prefix: /form
+    type:   annotation
