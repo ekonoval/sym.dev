@@ -19,7 +19,7 @@ class BundleController extends Controller
         $this->bundleName = 'AcmeEssentialsBookBundle';
     }
 
-    public function renderAuto($ctrl, $template, $assignVars)
+    public function renderAuto($ctrl, $template, $assignVars = [])
     {
         return $this->render("{$this->bundleName}:{$ctrl}:{$template}", $assignVars);
     }
