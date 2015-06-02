@@ -45,6 +45,11 @@ security:
             #http_basic:
             #    realm: "Secured Demo Area"
 
+#        secured_area:
+#            logout:
+#                path: /logout
+#                target: /
+
         default:
             anonymous: ~
             http_basic: ~
