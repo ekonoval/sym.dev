@@ -1,5 +1,5 @@
 <?php
-namespace Acme\EssentialsBookBundle\Helpers;
+namespace Acme\EssentialsBookBundle\Helpers\Service;
 
 class BookMailer
 {

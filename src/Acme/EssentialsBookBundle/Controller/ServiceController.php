@@ -1,7 +1,7 @@
 <?php
 namespace Acme\EssentialsBookBundle\Controller;
 
-use Acme\EssentialsBookBundle\Helpers\BookMailer;
+use Acme\EssentialsBookBundle\Helpers\Service\BookMailer;
 use Acme\EssentialsBookBundle\Helpers\BundleController;
 use Acme\EssentialsBookBundle\Helpers\PlainResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -23,5 +23,7 @@ class ServiceController extends BundleController
         $mailer = $this->get('my_mailer');
 
         $mailer1 = $this->get('my_mailer');
+
+        pa($mailer);
     }
 }
