@@ -13,8 +13,15 @@ class ServiceController extends BundleController
      */
     public function indexAction()
     {
-        $this->_t1();
+//        $this->_t1();
+        $this->t2();
         return new PlainResponse();
+    }
+
+    private function t2()
+    {
+        $manager = $this->get('newsletter_manager');
+        pa($manager);
     }
 
     private function _t1()

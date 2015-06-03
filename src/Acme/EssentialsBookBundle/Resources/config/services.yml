@@ -11,3 +11,7 @@ services:
     my_mailer:
         class: Acme\EssentialsBookBundle\Helpers\Service\BookMailer
         arguments: ["%my_mailer.transport%"]
+
+    newsletter_manager:
+        class: Acme\EssentialsBookBundle\Helpers\Service\NewsletterManager
+        arguments: ["@my_mailer"]
