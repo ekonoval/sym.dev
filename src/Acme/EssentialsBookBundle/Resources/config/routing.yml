@@ -27,3 +27,8 @@ acme_essentials_book_security:
     resource: "@AcmeEssentialsBookBundle/Controller/SecurityController.php"
 #    prefix: /security
     type:   annotation
+
+acme_essentials_book_services:
+    resource: "@AcmeEssentialsBookBundle/Controller/ServiceController.php"
+    prefix: /serv
+    type:   annotation
