@@ -1,0 +1,17 @@
+parameters:
+    my_mailer.transport: '00000'
+
+services:
+    acme_essentials_book.form.task:
+        class: Acme\EssentialsBookBundle\Form\Type\TaskType
+        tags:
+            - {name: form.type, alias:taskFrm}
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    my_mailer:
+        class: Acme\EssentialsBookBundle\Helpers\Service\BookMailer
+        arguments: ["%my_mailer.transport%"]
+
+    newsletter_manager:
+        class: Acme\EssentialsBookBundle\Helpers\Service\NewsletterManager
+        arguments: ["@my_mailer"]

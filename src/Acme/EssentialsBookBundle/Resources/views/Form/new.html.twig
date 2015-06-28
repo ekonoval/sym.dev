@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <ul>
+        <li><a href="{{ path('ebb_form_new') }}">new</a></li>
+    </ul>
+    
+    {{ form_start(form,  {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}

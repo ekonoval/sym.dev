@@ -2,6 +2,7 @@
 
 namespace Acme\DemoBundle\Controller;
 
+use Acme\EssentialsBookBundle\Helpers\PlainResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -52,5 +53,17 @@ class DemoController extends Controller
         }
 
         return array('form' => $form->createView());
+    }
+
+    /**
+     * @Route("test-service")
+     */
+    public function testServiceAction()
+    {
+        $mailer = $this->get('my_mailer');
+
+        pa($mailer);
+
+        return new PlainResponse();
     }
 }

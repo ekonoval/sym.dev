@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h3>Manual fields ---</h3>
+    <ul>
+        <li><a href="{{ path('ebb_form_new') }}">new</a></li>
+    </ul>
+
+    {% form_theme form '::form/fields.html.twig' %}
+    {{ form_start(form,  {'attr': {'novalidate': 'novalidate'}}) }}
+
+    {{ form_errors(form) }}
+
+    <div class="specific">
+        {{ form_row(form.task) }}
+    </div>
+
+    <div class="fake-due-date">
+        {{ form_label(form.comment) }}
+        {{ form_errors(form.comment) }}
+        {{ form_widget(form.comment, {'attr': {'class': 'task_field', 'id':'kkkk', 'style':'width:400px;', 'rows':5}}) }}
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,34 @@
+acme_essentials_book_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: AcmeEssentialsBookBundle:Default:index }
+
+acme_esb_rand:
+  path: /random/{limit}
+  defaults: { _controller: AcmeEssentialsBookBundle:Random:index }
+
+acme_essentials_book_blog:
+    resource: "@AcmeEssentialsBookBundle/Controller/BlogController.php"
+    type:   annotation
+
+acme_essentials_book_db:
+  resource: "@AcmeEssentialsBookBundle/Controller/DoctrineController.php"
+  type:   annotation
+
+acme_essentials_book_validate:
+    resource: "@AcmeEssentialsBookBundle/Controller/ValidationController.php"
+    type:   annotation
+
+acme_essentials_book_form:
+    resource: "@AcmeEssentialsBookBundle/Controller/FormController.php"
+    prefix: /form
+    type:   annotation
+
+acme_essentials_book_security:
+    resource: "@AcmeEssentialsBookBundle/Controller/SecurityController.php"
+#    prefix: /security
+    type:   annotation
+
+acme_essentials_book_services:
+    resource: "@AcmeEssentialsBookBundle/Controller/ServiceController.php"
+    prefix: /serv
+    type:   annotation

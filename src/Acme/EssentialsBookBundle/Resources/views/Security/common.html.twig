@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="...">Delete</a>
+    {% else %}
+        not granted
+    {% endif %}
+{% endblock %}

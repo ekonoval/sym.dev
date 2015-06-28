@@ -3,6 +3,18 @@
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
+function pa()
+{
+    $backtrace = debug_backtrace();
+    $args = func_get_args();
+    $matches = array();
+    preg_match('|.*[\/\\\](.+)$|', $backtrace[0]['file'], $matches);
+    $res = array($matches[1] . ': ' . $backtrace[0]['line'], $args);
+    echo "<pre>";
+    print_r($res);
+    echo "</pre>";
+}
+
 class AppKernel extends Kernel
 {
     public function registerBundles()
@@ -17,6 +29,8 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
+            new Acme\EssentialsBookBundle\AcmeEssentialsBookBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
