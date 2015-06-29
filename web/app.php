@@ -7,6 +7,7 @@ use Symfony\Component\ClassLoader\ApcClassLoader;
 use Symfony\Component\HttpFoundation\Request;
 
 $environment = (getenv('SYMFONY_ENV')) ?: 'prod';
+//$environment = 'prod';
 
 // Set a constant for the base Symfony directory, can be useful
 define('ROOT_DIR', realpath(__DIR__ . '/../'));

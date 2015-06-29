@@ -11,6 +11,17 @@ imports:
 #        result_cache_driver: apc
 #        query_cache_driver: apc
 
+#### uncomment to have DEBUG available in prod, see also AppKernel::registerBundles()
+#web_profiler:
+#    toolbar: true
+#    intercept_redirects: false
+#
+#framework:
+#    router:
+#        resource: "%kernel.root_dir%/config/routing_dev.yml"
+#        strict_requirements: true
+#    profiler: { only_exceptions: false }
+
 monolog:
     handlers:
         main:
