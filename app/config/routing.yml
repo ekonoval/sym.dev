@@ -10,8 +10,8 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
-#logout:
-#    path: /logout
+logout:
+    path: /admin-logout
 
 # AcmeDemoBundle routes (to be removed)
 _acme_demo:
