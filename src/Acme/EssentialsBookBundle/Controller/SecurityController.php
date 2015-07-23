@@ -17,6 +17,17 @@ class SecurityController extends BundleController
     }
 
     /**
+     * @Route("/admin/test")
+     * @return PlainResponse
+     */
+    public function adminTestAction()
+    {
+        $user = $this->getUser();
+
+        return new PlainResponse();
+    }
+
+    /**
      * @Route("/nonadmin/hello")
      * //@Security("has_role('ROLE_ADMIN')")
      */
